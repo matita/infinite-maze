@@ -48,7 +48,7 @@ public class GridCell
     public void Disable()
     {
         foreach (var cube in _cubes)
-            UnityEngine.Object.Destroy(cube);
+            CubesPool.Release(cube);
         _cubes.Clear();
         Release(this);
     }
@@ -69,8 +69,6 @@ public class GridCell
     {
         buildLine(cellCount, 0, cellCount, container, WallDirection.Vertical);
         buildLine(0, cellCount, cellCount, container, WallDirection.Horizontal);
-        //RoomUtils.lineV(this.rnd, linesList, gridW, 0, gridH);
-        //RoomUtils.lineH(this.rnd, linesList, 0, gridH, gridW);
     
         splitRoom(0, 0, cellCount, cellCount, container);
     }
@@ -101,7 +99,7 @@ public class GridCell
                 height = wallWidth;
             }
 
-            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            var cube = CubesPool.Get();
             cube.transform.position = new Vector3(xPos, 0f, yPos);
             cube.transform.localScale = new Vector3(width, unit, height);
             cube.transform.SetParent(container.transform);
@@ -116,7 +114,7 @@ public class GridCell
         if (w <= 1 || h <= 1)
             return;
         
-        var maxArea = this.rnd.Next(0, 20);
+        var maxArea = this.rnd.Next(GameManager.Instance.MinRoomArea, GameManager.Instance.MaxRoomArea);
         if (w * h <= maxArea)
             return;
 
