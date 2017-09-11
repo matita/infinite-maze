@@ -55,6 +55,7 @@ public class GridCell
 
     private void reset(int x, int y, int seed)
     {
+        this.cellCount = GameManager.Instance.CellsPerSide;
         this.x = x;
         this.y = y;
         this.seed = seed;

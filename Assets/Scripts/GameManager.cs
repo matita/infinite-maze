@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	public Camera MainCamera;
 	public int MinRoomArea = 0;
 	public int MaxRoomArea = 20;
+	[Range(3, 30)]
+	public int CellsPerSide = 10;
 	
 
 	void Awake()
