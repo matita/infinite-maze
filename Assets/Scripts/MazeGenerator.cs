@@ -15,10 +15,21 @@ public class MazeGenerator
         var bottomLeft = camera.ScreenToWorldPoint(new Vector3(0f, 0f, camera.transform.position.y));
 		var topRight = camera.ScreenToWorldPoint(new Vector3(camera.pixelWidth, camera.pixelHeight, camera.transform.position.y));
 
+        //*
+        // all visible cells
 		int x1 = (int)Mathf.Round(bottomLeft.x);
 		int x2 = (int)Mathf.Round(topRight.x);
 		int y1 = (int)Mathf.Round(bottomLeft.z);
 		int y2 = (int)Mathf.Round(topRight.z);
+        /*/
+        // just the center cell
+        int x1 = (int)Mathf.Round(camera.transform.position.x);
+		int x2 = x1;
+		int y1 = (int)Mathf.Round(camera.transform.position.z);
+		int y2 = y1;
+        //*/
+
+
 
         _currentSeeds.Clear();
 

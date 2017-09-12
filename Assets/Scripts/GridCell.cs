@@ -74,11 +74,47 @@ public class GridCell
         splitRoom(0, 0, cellCount, cellCount, container);
     }
 
+
+    private void buildWall(int x, int y, int size, GameObject container, WallDirection direction)
+    {
+        float xPos, yPos, width, height;
+
+        if (direction == WallDirection.Vertical)
+        {
+            xPos = startX + x * unit/* - unit/2f*/;
+            yPos = startY + (y + size / 2f) * unit;
+            width = wallWidth;
+            height = unit * size;
+        }
+        else
+        {
+            xPos = startX + (x + size / 2f) * unit;
+            yPos = startY + y * unit/* - unit/2f*/;
+            width = unit * size;
+            height = wallWidth;
+        }
+
+        var cube = CubesPool.Get();
+        cube.transform.position = new Vector3(xPos, 0f, yPos);
+        cube.transform.localScale = new Vector3(width, unit, height);
+        cube.transform.SetParent(container.transform);
+
+        _cubes.Add(cube);
+    }
+
     private void buildLine(int x, int y, int size, GameObject container, WallDirection direction)
     {
         var gapI = this.rnd.Next(0, size);
 
-        for (int i = 0; i < size; i++)
+        if (gapI > 0)
+            buildWall(x, y, gapI, container, direction);
+        if (gapI + 1 < size)
+        {
+            int nextSize = size - (gapI + 1);
+            buildWall(x + (direction == WallDirection.Horizontal ? gapI + 1 : 0), y + (direction == WallDirection.Vertical ? gapI + 1 : 0), nextSize, container, direction);
+        }
+
+        /*for (int i = 0; i < size; i++)
         {
             if (i == gapI)
                 continue;
@@ -106,7 +142,7 @@ public class GridCell
             cube.transform.SetParent(container.transform);
 
             _cubes.Add(cube);
-        }
+        }*/
     }
 
 
@@ -131,15 +167,14 @@ public class GridCell
         if (w <= 1)
             return;
 
-        var firstW = this.rnd.Next(1, w);//1 + Math.floor(rnd() * (w-1));
+        var min = Mathf.Max(1, Mathf.Round((float)(w)/4f));
+        var max = Mathf.Round(((float)w / 4f) * 3f);
+        var firstW = this.rnd.Next((int)min, (int)max); //this.rnd.Next(1, w);
         var lineX = x + firstW;
-        //RoomUtils.lineV(rnd, lines, lineX, y, h);
         buildLine(lineX, y, h, container, WallDirection.Vertical);
 
         splitRoom(x, y, firstW, h, container, level + 1);
         splitRoom(lineX, y, w - firstW, h, container, level + 1);
-        //RoomUtils.splitRoom(rnd, lines, x, y, firstW, h, level + 1);
-        //RoomUtils.splitRoom(rnd, lines, lineX, y, w - firstW, h, level + 1);
     }
 
     private void splitH(int x, int y, int w, int h, GameObject container, int level)
