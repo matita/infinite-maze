@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228369767}
   - component: {fileID: 228369768}
+  - component: {fileID: 228369769}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MazeContainer: {fileID: 1803465340}
   MainCamera: {fileID: 1401889501}
+  MaxCameraDistance: 10
   MinRoomArea: 0
   MaxRoomArea: 20
   CellsPerSide: 10
@@ -157,6 +159,18 @@ MonoBehaviour:
   MaxDistance: 5
   Threshold: 1
   CameraFriction: 0.95
+--- !u!114 &228369769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 228369766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2ae9287e50e6d4f97f24da7ea2c8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PercentHeight: 2
 --- !u!1 &1401889497
 GameObject:
   m_ObjectHideFlags: 0

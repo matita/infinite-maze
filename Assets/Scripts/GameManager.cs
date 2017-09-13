@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject MazeContainer;
 	public Camera MainCamera;
+	public float MaxCameraDistance = 10f;
 	public int MinRoomArea = 0;
 	public int MaxRoomArea = 20;
 	[Range(3, 30)]
@@ -58,13 +60,41 @@ public class GameManager : MonoBehaviour {
 		}
 
 		//MainCamera.transform.position += diff * CameraFriction * Time.deltaTime;
+		MainCamera.transform.position += CameraSpeed * Time.deltaTime;
 		
-		MazeGenerator.Build(MainCamera, MazeContainer);
+		MazeGenerator.Build(MainCamera, MazeContainer, MaxCameraDistance);
 		
 		if (CubesPool.Count != _lastCubesCount)
 		{
 			_lastCubesCount = CubesPool.Count;
 			Debug.Log("Cubes count: " + _lastCubesCount);
+		}
+	}
+
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.cyan;
+		for (int i = 0; i < MazeGenerator.cameraPolygon.Length; i++)
+		{
+			var p1 = NumberUtil.V2ToV3(MazeGenerator.cameraPolygon[i]);
+			var p2 = NumberUtil.V2ToV3(MazeGenerator.cameraPolygon[(i + 1) % MazeGenerator.cameraPolygon.Length]);
+			Gizmos.DrawLine(p1, p2);
+		}
+
+
+		int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()));
+        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()));
+        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()));
+        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()));
+
+        
+		Gizmos.color = Color.red;
+		for (int x = x1; x <= x2; x++)
+		{
+			for (int y = y1; y <= y2; y++)
+			{
+                Gizmos.DrawCube(new Vector3((float)x, 0f, (float)y), Vector3.one*0.1f);
+			}
 		}
 	}
 }
