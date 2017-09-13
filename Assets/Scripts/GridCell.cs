@@ -72,6 +72,17 @@ public class GridCell
         buildLine(0, cellCount, cellCount, container, WallDirection.Horizontal);
     
         splitRoom(0, 0, cellCount, cellCount, container);
+
+        buildFloor(container);
+    }
+
+    private void buildFloor(GameObject container)
+    {
+        var floor = CubesPool.Get();
+        floor.transform.position = new Vector3((float)this.x, -unit, (float)this.y);
+        floor.transform.localScale = new Vector3(1f, unit, 1f);
+        floor.transform.SetParent(container.transform);
+        _cubes.Add(floor);
     }
 
 
@@ -113,36 +124,6 @@ public class GridCell
             int nextSize = size - (gapI + 1);
             buildWall(x + (direction == WallDirection.Horizontal ? gapI + 1 : 0), y + (direction == WallDirection.Vertical ? gapI + 1 : 0), nextSize, container, direction);
         }
-
-        /*for (int i = 0; i < size; i++)
-        {
-            if (i == gapI)
-                continue;
-
-            float xPos, yPos, width, height;
-
-            if (direction == WallDirection.Vertical)
-            {
-                xPos = startX + x * unit - unit/2f;
-                yPos = startY + (y + i) * unit;
-                width = wallWidth;
-                height = unit;
-            }
-            else
-            {
-                xPos = startX + (x + i) * unit;
-                yPos = startY + y * unit - unit/2f;
-                width = unit;
-                height = wallWidth;
-            }
-
-            var cube = CubesPool.Get();
-            cube.transform.position = new Vector3(xPos, 0f, yPos);
-            cube.transform.localScale = new Vector3(width, unit, height);
-            cube.transform.SetParent(container.transform);
-
-            _cubes.Add(cube);
-        }*/
     }
 
 

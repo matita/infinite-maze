@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2ae9287e50e6d4f97f24da7ea2c8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PercentHeight: 2
+  PercentHeight: 6
 --- !u!1 &1401889497
 GameObject:
   m_ObjectHideFlags: 0
