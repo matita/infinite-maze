@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance;
 
+	public Material GroundMaterial;
+	public Material WallMaterial;
 	public GameObject MazeContainer;
 	public Camera MainCamera;
 	public float MaxCameraDistance = 10f;
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public int MaxRoomArea = 20;
 	[Range(3, 30)]
 	public int CellsPerSide = 10;
+	public float UnitsPerCell = 10f;
 	
 
 	void Awake()
@@ -82,10 +85,10 @@ public class GameManager : MonoBehaviour {
 		}
 
 
-		int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()));
-        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()));
-        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()));
-        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()));
+		int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / UnitsPerCell);
+        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / UnitsPerCell);
+        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / UnitsPerCell);
+        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / UnitsPerCell);
 
         
 		Gizmos.color = Color.red;
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour {
 		{
 			for (int y = y1; y <= y2; y++)
 			{
-                Gizmos.DrawCube(new Vector3((float)x, 0f, (float)y), Vector3.one*0.1f);
+                Gizmos.DrawCube(new Vector3((float)x, 0f, (float)y) * UnitsPerCell, Vector3.one*UnitsPerCell*0.1f);
 			}
 		}
 	}

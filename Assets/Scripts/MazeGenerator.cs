@@ -31,13 +31,15 @@ public class MazeGenerator
             NumberUtil.V3ToV2(topLeft)
         };
 
-        int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()));
-        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()));
-        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()));
-        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()));
+        int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / GameManager.Instance.UnitsPerCell);
+        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / GameManager.Instance.UnitsPerCell);
+        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / GameManager.Instance.UnitsPerCell);
+        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / GameManager.Instance.UnitsPerCell);
 
-        x2 = Mathf.Min(x2, x1 + 10);
-        y2 = Mathf.Min(y2, y1 + 10);
+        //x1 = x2 = y1 = y2 = 0;
+
+        //x2 = Mathf.Min(x2, x1 + 10);
+        //y2 = Mathf.Min(y2, y1 + 10);
 
         _currentSeeds.Clear();
 

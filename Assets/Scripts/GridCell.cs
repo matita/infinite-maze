@@ -79,8 +79,9 @@ public class GridCell
     private void buildFloor(GameObject container)
     {
         var floor = CubesPool.Get();
-        floor.transform.position = new Vector3((float)this.x, -unit, (float)this.y);
-        floor.transform.localScale = new Vector3(1f, unit, 1f);
+        floor.transform.position = new Vector3((float)this.x, -unit, (float)this.y) * GameManager.Instance.UnitsPerCell;
+        floor.transform.localScale = new Vector3(1f, unit, 1f) * GameManager.Instance.UnitsPerCell;
+        floor.GetComponent<MeshRenderer>().material = GameManager.Instance.GroundMaterial;
         floor.transform.SetParent(container.transform);
         _cubes.Add(floor);
     }
@@ -106,8 +107,9 @@ public class GridCell
         }
 
         var cube = CubesPool.Get();
-        cube.transform.position = new Vector3(xPos, 0f, yPos);
-        cube.transform.localScale = new Vector3(width, unit, height);
+        cube.transform.position = new Vector3(xPos, 0f, yPos) * GameManager.Instance.UnitsPerCell;
+        cube.transform.localScale = new Vector3(width, unit, height) * GameManager.Instance.UnitsPerCell;
+        cube.GetComponent<MeshRenderer>().material = GameManager.Instance.WallMaterial;
         cube.transform.SetParent(container.transform);
 
         _cubes.Add(cube);
