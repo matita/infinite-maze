@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 
 	public Material GroundMaterial;
+	public PhysicMaterial SlipperyMaterial;
 	public Material WallMaterial;
 	public GameObject MazeContainer;
 	public Camera MainCamera;

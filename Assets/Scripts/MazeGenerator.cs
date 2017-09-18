@@ -20,10 +20,10 @@ public class MazeGenerator
         if (camera.transform.position == _lastCameraPosition && camera.transform.rotation == _lastCameraRotation)
             return;
 
-        var bottomLeft = getGroundIntersection(camera, new Vector3(0f, 0f, 0f), maxDistance);
-        var topLeft = getGroundIntersection(camera, new Vector3(0f, camera.pixelHeight, 0f), maxDistance);
-        var topRight = getGroundIntersection(camera, new Vector3(camera.pixelWidth, camera.pixelHeight, 0f), maxDistance);
-        var bottomRight = getGroundIntersection(camera, new Vector3(camera.pixelWidth, 0f, 0f), maxDistance);
+        var bottomLeft = GetGroundIntersection(camera, new Vector3(0f, 0f, 0f), maxDistance);
+        var topLeft = GetGroundIntersection(camera, new Vector3(0f, camera.pixelHeight, 0f), maxDistance);
+        var topRight = GetGroundIntersection(camera, new Vector3(camera.pixelWidth, camera.pixelHeight, 0f), maxDistance);
+        var bottomRight = GetGroundIntersection(camera, new Vector3(camera.pixelWidth, 0f, 0f), maxDistance);
         cameraPolygon = new Vector2[] {
             NumberUtil.V3ToV2(bottomLeft), 
             NumberUtil.V3ToV2(bottomRight), 
@@ -31,10 +31,10 @@ public class MazeGenerator
             NumberUtil.V3ToV2(topLeft)
         };
 
-        int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / GameManager.Instance.UnitsPerCell);
-        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / GameManager.Instance.UnitsPerCell);
-        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / GameManager.Instance.UnitsPerCell);
-        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / GameManager.Instance.UnitsPerCell);
+        int x1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / GameManager.Instance.UnitsPerCell) - 1;
+        int x2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.x).ToArray()) / GameManager.Instance.UnitsPerCell) + 1;
+        int y1 = (int)Mathf.Round(Mathf.Min(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / GameManager.Instance.UnitsPerCell) - 1;
+        int y2 = (int)Mathf.Round(Mathf.Max(MazeGenerator.cameraPolygon.Select(v=>v.y).ToArray()) / GameManager.Instance.UnitsPerCell) + 1;
 
         //x1 = x2 = y1 = y2 = 0;
 
@@ -75,7 +75,7 @@ public class MazeGenerator
         _lastCameraRotation = camera.transform.rotation;
     }
 
-    private static Vector3 getGroundIntersection(Camera camera, Vector3 screenPosition, float maxDistance)
+    public static Vector3 GetGroundIntersection(Camera camera, Vector3 screenPosition, float maxDistance)
     {
         Ray ray = camera.ScreenPointToRay(screenPosition);
         float distance = 0;
