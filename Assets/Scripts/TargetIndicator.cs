@@ -22,7 +22,7 @@ public class TargetIndicator : MonoBehaviour {
 		var playerGround = new Vector3(player.position.x, player.position.z, 0f);
 		var dist = targetGround - playerGround;
 		
-		transform.rotation = Quaternion.FromToRotation(Vector3.right, targetGround - playerGround);
+		transform.rotation = Quaternion.FromToRotation(Quaternion.Euler(0f, 0f, -player.rotation.eulerAngles.y) * Vector3.right, dist);
 		distText.text = dist.magnitude.ToString("0.0") + "m";
 
 	}

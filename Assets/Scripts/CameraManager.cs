@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour {
 	// Use this for initialization
 	// Update is called once per frame
 	void Update () {
+		/*rotation = target.rotation.y - 180f;
 		float groundDist = Mathf.Sqrt(distance.x * distance.x + distance.z * distance.z);
 		Vector3 rotatedDistance = new Vector3(
 			groundDist * Mathf.Cos(Mathf.Deg2Rad * rotation),
@@ -18,6 +19,6 @@ public class CameraManager : MonoBehaviour {
 			groundDist * Mathf.Sin(Mathf.Deg2Rad * rotation)
 		);
 		transform.position = target.position + rotatedDistance;
-		transform.rotation = Quaternion.Euler(55f, -90 - rotation, 0f);
+		transform.rotation = Quaternion.Euler(55f, -90 - rotation, 0f);*/
 	}
 }

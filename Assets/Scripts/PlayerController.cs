@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	public float speed = 100f;
+	public float rotationSensitivity = 400f;
+	private float _rotation = 0;
 	private Vector3 _velocity;
 	private Vector3 _collisionVelocity;
-	private float _zSpeed;
 	private Rigidbody _rb;
 
 	private Dictionary<Collider, Vector3> _currentCollisions = new Dictionary<Collider, Vector3>();
@@ -47,11 +48,12 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate()
 	{
 		_rb.velocity = (_velocity + _collisionVelocity) * speed * Time.deltaTime;
+		_rb.angularVelocity = new Vector3(0f, Input.GetAxis("Mouse X") * 1000f * Time.deltaTime, 0f);
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		_velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-		//transform.Translate(_xSpeed * speed * Time.deltaTime, 0f, _zSpeed * speed * Time.deltaTime);
+		_rotation += Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
+		transform.rotation = Quaternion.Euler(0f, _rotation, 0f);
+		_velocity = transform.rotation * new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 	}
 }
