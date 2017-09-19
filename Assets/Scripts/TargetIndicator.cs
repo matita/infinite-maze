@@ -7,6 +7,7 @@ public class TargetIndicator : MonoBehaviour {
 
 	public Transform target;
 	public Transform player;
+	public Transform arm;
 	public Text distText;
 	public float padding = 100f;
 
@@ -18,6 +19,15 @@ public class TargetIndicator : MonoBehaviour {
 	
 	void Update () {
 		var camera = Camera.main;
+
+		var targetScreenPos = camera.WorldToScreenPoint(new Vector3(target.position.x, 0f, target.position.z));
+		var distFromTargetScreen = targetScreenPos - new Vector3(camera.pixelWidth / 2f, camera.pixelHeight / 2f, targetScreenPos.z);
+		
+		if (distFromTargetScreen.magnitude < padding)
+			arm.gameObject.SetActive(false);
+		else
+			arm.gameObject.SetActive(true);
+
 		var targetGround = new Vector3(target.position.x, target.position.z, 0f);
 		var playerGround = new Vector3(player.position.x, player.position.z, 0f);
 		var dist = targetGround - playerGround;

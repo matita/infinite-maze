@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		_rotation += Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
+		_rotation += (Input.GetAxis("Mouse X") + Input.GetAxis("Right X")) * rotationSensitivity * Time.deltaTime;
 		transform.rotation = Quaternion.Euler(0f, _rotation, 0f);
 		_velocity = transform.rotation * new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 	}

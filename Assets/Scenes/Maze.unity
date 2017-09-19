@@ -155,8 +155,8 @@ MonoBehaviour:
   MazeContainer: {fileID: 1803465340}
   MainCamera: {fileID: 1401889501}
   MaxCameraDistance: 100
-  MinRoomArea: 30
-  MaxRoomArea: 50
+  MinRoomArea: 0
+  MaxRoomArea: 20
   CellsPerSide: 20
   UnitsPerCell: 100
   CameraSpeed: {x: 0, y: 0, z: 0}
@@ -924,5 +924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1481951920}
   player: {fileID: 1897502172}
+  arm: {fileID: 1471138420}
   distText: {fileID: 1645027097}
   padding: 100
