@@ -9,25 +9,39 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 _collisionVelocity;
 	private float _zSpeed;
 	private Rigidbody _rb;
+
+	private Dictionary<Collider, Vector3> _currentCollisions = new Dictionary<Collider, Vector3>();
 	
 	void Start()
 	{
 		_rb = GetComponent<Rigidbody>();
 	}
 
-	void OnCollisionStay(Collision collision)
+	void OnCollisionEnter(Collision collision)
 	{
-		var normal = collision.contacts[0].normal;
-		if (normal.y != 0f)
-			return;
-		
-		_velocity += normal;
-		Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.green);
+		foreach (var point in collision.contacts)
+		{
+			var normal = point.normal;
+			if (normal == Vector3.up)
+				continue;
+			
+			//Debug.Log("collider on enter: " + collision.collider);
+			_currentCollisions[point.otherCollider] = normal;
+			_collisionVelocity = normal;
+			Debug.Log("enter collisionVelocity: " + _collisionVelocity);
+		}
 	}
 
 	void OnCollisionExit(Collision collision)
 	{
-		_collisionVelocity = Vector3.zero;
+		if (!_currentCollisions.ContainsKey(collision.collider))
+			return;
+
+		//Debug.Log("collider on exit: " + collision.collider);
+		var collisionVector = _currentCollisions[collision.collider];
+		_collisionVelocity -= collisionVector;
+		_currentCollisions.Remove(collision.collider);
+		Debug.Log("exit collisionVelocity: " + _collisionVelocity);
 	}
 	
 	void FixedUpdate()
