@@ -1,0 +1,92 @@
+Initialize engine version: 2017.1.0f3 (472613c02cf7)
+GfxDevice: creating device client; threaded=1
+d3d11: D3D_FEATURE_LEVEL_11_1 not-recognized (only 11.0 runtime installed?)
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: ATI Mobility Radeon HD 5650 (ID=0x68c1)
+    Vendor:   ATI
+    VRAM:     1014 MB
+    Driver:   8.741.1.1000
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Progetti\Unity\infinite-maze\docs\winx64\Maze_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.030 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.476436 ms
+Cubes count: 1493
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1f84 -> priority: 1 
+  Thread -> id: 1b28 -> priority: 1 
+Cubes count: 1977
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Cubes count: 1982
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 1 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Cubes count: 2483
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Cubes count: 2501
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 2 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 3 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 4 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 5 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 6 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 7 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 8 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 9 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Found 10 targets
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+

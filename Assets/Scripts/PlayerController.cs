@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour {
 			//Debug.Log("collider on enter: " + collision.collider);
 			_currentCollisions[point.otherCollider] = normal;
 			_collisionVelocity = normal;
-			Debug.Log("enter collisionVelocity: " + _collisionVelocity);
 		}
 	}
 
@@ -42,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 		var collisionVector = _currentCollisions[collision.collider];
 		_collisionVelocity -= collisionVector;
 		_currentCollisions.Remove(collision.collider);
-		Debug.Log("exit collisionVelocity: " + _collisionVelocity);
 	}
 	
 	void FixedUpdate()
